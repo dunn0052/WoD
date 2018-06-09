@@ -179,7 +179,7 @@ class wChar:
 
         place = derangements_map.index(key)
         # tuple of (minor, major)
-        return (derangements_map[place], derangements_map[place-1]) if (place % 2 == 1) else (derangements_map[place], derangements_map[place + 1])
+        return (derangements_map[place], derangements_map[place-1]) if place % 2 else (derangements_map[place], derangements_map[place + 1])
 
 
     def save_char(self, path):

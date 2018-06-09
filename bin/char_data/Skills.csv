@@ -1,0 +1,25 @@
+Name,Current,Type,Attribute,Max Value
+Survival,0,Skill,Physical,5
+Stealth,0,Skill,Physical,5
+Firearms,0,Skill,Physical,5
+Larceny,0,Skill,Physical,5
+Brawl,0,Skill,Physical,5
+Weaponry,0,Skill,Physical,5
+Drive,0,Skill,Physical,5
+Athletics,0,Skill,Physical,5
+Academics,0,Skill,Mental,5
+Crafts,0,Skill,Mental,5
+Medicine,0,Skill,Mental,5
+Science,0,Skill,Mental,5
+Occult,0,Skill,Mental,5
+Computer,0,Skill,Mental,5
+Politics,0,Skill,Mental,5
+Investigation,0,Skill,Mental,5
+Empathy,0,Skill,Social,5
+Socialize,0,Skill,Social,5
+Animal Ken,0,Skill,Social,5
+Streetwise,0,Skill,Social,5
+Persuasion,0,Skill,Social,5
+Subterfuge,0,Skill,Social,5
+Expression,0,Skill,Social,5
+Intimidation,0,Skill,Social,5

@@ -1,0 +1,15 @@
+Name,Quantity,Type,Attribute,Damage,Damage Type,Size,Cost,Special
+Sap,0,Inventory,Weapon,1,B,1,1,Knockout
+Brass Knuckles,0,Inventory,Weapon,1,B,0,1,Brawl
+Wood Club,0,Inventory,Weapon,2,B,2,0,
+Metal Mace,0,Inventory,Weapon,3,B,2,2,
+Knife,0,Inventory,Weapon,1,L,1,1,
+Rapier,0,Inventory,Weapon,2,L,2,2,Armor Piercing 1
+Sword,0,Inventory,Weapon,3,L,2,2,
+Katana,0,Inventory,Weapon,3,L,2,3,Druability 1
+Greatsword,0,Inventory,Weapon,4,L,3,3,
+Small Ax,0,Inventory,Weapon,2,L,1,1,
+Large Ax,0,Inventory,Weapon,3,L,3,2,9 again
+Great Ax,0,Inventory,Weapon,5,L,4,3,9 again
+Stake,0,Inventory,Weapon,1,L,1,0,
+Spear,0,Inventory,Weapon,3,L,4,1,1 Defense

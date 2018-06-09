@@ -1,0 +1,11 @@
+Name,Quantity,Type,Attribute,Damage,Damage Type,Size,Cost,Range,Clip,Strength
+"Revolver, Lt.",0,Inventory,Weapon,2,L,1,2,20/40/60,6,2
+"Revolver, Hvy",0,Inventory,Weapon,3,L,1,2,35/70/140,6,3
+"Pistorl, Lt",0,Inventory,Weapon,2,L,1,3,20/40/80,18,2
+"Pistorl, Hvy.",0,Inventory,Weapon,3,L,1,3,30/60/120,8,3
+Rifle,0,Inventory,Weapon,5,L,3,2,200/400/800,6,2
+"SMG, Small",0,Inventory,Weapon,2,L,1,3,25/50/100,31,2
+"SMG, Large",0,Inventory,Weapon,3,L,2,3,50/100/200,31,3
+Assault Rifle,0,Inventory,Weapon,4,L,3,3,150/360/600,43,3
+Shotgun,0,Inventory,Weapon,4,L,2,2,20/40/80,6,3
+Crossbow,0,Inventory,Weapon,3,L,3,3,40/80/160,1,3
