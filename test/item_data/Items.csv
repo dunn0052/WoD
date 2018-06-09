@@ -1,0 +1,16 @@
+Name,Quantity,Type,Attribute,Durability,Size,Structure,Cost
+Automotive Tools,0,Inventory,Item,2,2,2,2
+Climbing Gear,0,Inventory,Item,2,2,4,2
+Demolitions Kit,0,Inventory,Item,2,2,4,3
+First-Aid Kit,0,Inventory,Item,1,2,3,1
+Flashlight,0,Inventory,Item,1,1,2,0
+Gasmask,0,Inventory,Item,1,2,3,2
+Gunsmithing Kit,0,Inventory,Item,2,2,4,2
+Lock Picks,0,Inventory,Item,2,1,3,3
+Mace,0,Inventory,Item,1,0,1,0
+Nightvision Goggles,0,Inventory,Item,1,1,2,2
+Silencer,0,Inventory,Item,3,1,4,3
+Surveillance Equipment,0,Inventory,Item,1,3,4,3
+"Sights, Laser",0,Inventory,Item,1,1,2,3
+"Sights, Telescopic",0,Inventory,Item,1,1,2,3
+Survival Gear,0,Inventory,Item,1,2,2,2
