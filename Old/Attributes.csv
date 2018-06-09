@@ -1,0 +1,10 @@
+Name,Current,Type,Attribute,Max Value
+Stamina,1,Attribute,Physical,5
+Dexterity,1,Attribute,Physical,5
+Strength,1,Attribute,Physical,5
+Intelligence,1,Attribute,Mental,5
+Resolve,1,Attribute,Mental,5
+Wits,1,Attribute,Mental,5
+Composure,1,Attribute,Social,5
+Manipulation,1,Attribute,Social,5
+Presence,1,Attribute,Social,5

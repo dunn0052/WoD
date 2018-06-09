@@ -1,0 +1,124 @@
+Name,Current,Type,Attribute
+Health,6,Trait,None
+Willpower,2,Trait,None
+Defense,1,Trait,None
+Morality,7,Trait,None
+Speed,7,Trait,None
+Size,5,Trait,None
+Initiative,2,Trait,None
+Status,0,Merit,Social,5
+Barfly,0,Merit,Social,1
+Fame,0,Merit,Social,3
+Resources,0,Merit,Social,5
+Allies,0,Merit,Social,5
+Striking Looks,0,Merit,Social,4
+Retainer,0,Merit,Social,5
+Contacts,0,Merit,Social,5
+Inspiring,0,Merit,Social,4
+Mentor,0,Merit,Social,5
+Stealth,0,Skill,Physical,5
+Brawl,0,Skill,Physical,5
+Drive,0,Skill,Physical,5
+Firearms,0,Skill,Physical,5
+Weaponry,0,Skill,Physical,5
+Survival,0,Skill,Physical,5
+Larceny,0,Skill,Physical,5
+Athletics,0,Skill,Physical,5
+Occult,0,Skill,Mental,5
+Science,0,Skill,Mental,5
+Politics,0,Skill,Mental,5
+Investigation,0,Skill,Mental,5
+Computer,0,Skill,Mental,5
+Academics,0,Skill,Mental,5
+Medicine,0,Skill,Mental,5
+Crafts,0,Skill,Mental,5
+Player,,Touches,Final
+Faction,,Touches,Final
+Gender,,Touches,Final
+Experience,0,Touches,Final
+Sex,,Touches,Final
+Age,-1,Touches,Final
+Concept,,Touches,Final
+Character Name,test_data,Touches,Final
+Description,,Touches,Final
+Group Name,,Touches,Final
+Intelligence,1,Attribute,Mental,5
+Resolve,1,Attribute,Mental,5
+Wits,1,Attribute,Mental,5
+Melancholia,False,Derangement,None
+Anxiety,False,Derangement,None
+Vocalization,False,Derangement,None
+Fugue,False,Derangement,None
+Megalomania,False,Derangement,None
+Schizophrenia,False,Derangement,None
+Avoidance,False,Derangement,None
+Irrationality,False,Derangement,None
+Narcissism,False,Derangement,None
+Inferiority Complex,False,Derangement,None
+Fixation,False,Derangement,None
+Suspicion,False,Derangement,None
+Obsessive Compulsion,False,Derangement,None
+Phobia,False,Derangement,None
+Depression,False,Derangement,None
+Paranoia,False,Derangement,None
+Hysteria,False,Derangement,None
+Multiple Personality,False,Derangement,None
+Weaponry Dodge,0,Merit,Physical,1
+Iron Stamina,0,Merit,Physical,3
+Disarm,0,Merit,Physical,2
+Strong Lungs,0,Merit,Physical,3
+Fighting Style: Two Weapons,0,Merit,Physical,4
+Stunt Driver,0,Merit,Physical,3
+Brawling Dodge,0,Merit,Physical,1
+Fast Reflexes,0,Merit,Physical,2
+Ambidextrous,0,Merit,Physical,3
+Gunslinger,0,Merit,Physical,3
+Fresh Start,0,Merit,Physical,1
+Direction Sense,0,Merit,Physical,1
+Quick Draw,0,Merit,Physical,1
+Natural Immunity,0,Merit,Physical,1
+Toxin Resistance,0,Merit,Physical,2
+Fighting Style: Kung Fu,0,Merit,Physical,5
+Giant,0,Merit,Physical,4
+Fighting Finesse,0,Merit,Physical,2
+Quick Healer,0,Merit,Physical,4
+Fleet Of Foot,0,Merit,Physical,3
+Iron Stomach,0,Merit,Physical,2
+Strong Back,0,Merit,Physical,1
+Fighting Style: Boxing,0,Merit,Physical,5
+Holistic Awareness,0,Merit,Mental,3
+Meditative Mind,0,Merit,Mental,1
+Danger Sense,0,Merit,Mental,2
+Eidetic Memory,0,Merit,Mental,2
+Common Sense,0,Merit,Mental,4
+Unseen Sense,0,Merit,Mental,3
+Language,0,Merit,Mental,4
+Encyclopedic Knowledge,0,Merit,Mental,4
+Fortitude,False,Virtue,None
+Hope,False,Virtue,None
+Faith,False,Virtue,None
+Prudence,False,Virtue,None
+Temperance,False,Virtue,None
+Charity,False,Virtue,None
+Justice,False,Virtue,None
+Sloth,False,Vice,None
+Wraith,False,Vice,None
+Gluttony,False,Vice,None
+Greed,False,Vice,None
+Envy,False,Vice,None
+Pride,False,Vice,None
+Lust,False,Vice,None
+Animal Ken,0,Skill,Social,5
+Socialize,0,Skill,Social,5
+Expression,0,Skill,Social,5
+Subterfuge,0,Skill,Social,5
+Streetwise,0,Skill,Social,5
+Empathy,0,Skill,Social,5
+Persuasion,0,Skill,Social,5
+Intimidation,0,Skill,Social,5
+Manipulation,1,Attribute,Social,5
+Composure,1,Attribute,Social,5
+Presence,1,Attribute,Social,5
+Strength,1,Attribute,Physical,5
+Stamina,1,Attribute,Physical,5
+Dexterity,1,Attribute,Physical,5
