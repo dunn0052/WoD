@@ -60,9 +60,10 @@ class Window(Frame):
 
     def display_character(self):
         po = ["Attribute", "Skill", "Merit", "Physical", "Mental", "Social", "Derangement", "Virtue", "Vice", "Inventory", "Weapon", "Item", "Armor"]
+        k = (0,0)
         for i in range(3):
             for j in range(3,6):
-                self.display_field(item_type = po[i], attribute = po[j])
+               k = self.display_field(item_type = po[i], attribute = po[j], grid_row= k[0], grid_column= k[1])
         k = (0,1)
         for i in range(6,9):
             k = self.display_field(item_type = po[i], attribute = None, grid_row = k[0], grid_column = k[1])
@@ -92,8 +93,9 @@ class Window(Frame):
             Label(root, text = stat + ": " + str(current_value), anchor = justification).grid(row = grid_row, column = grid_column)
             return
         stat_text = stat if isinstance(stat, bool) else stat + ": " + str(current_value)
-        Label(root, text = stat_text, anchor = justification).grid(row = grid_row, column = grid_column)
-
+        if current_value:
+            Label(root, text = stat_text, anchor = justification).grid(row = grid_row, column = grid_column)
+        return
 
 root = Tk()
 #root.geometry("400x300")
