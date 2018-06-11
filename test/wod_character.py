@@ -116,12 +116,12 @@ class wChar:
         else:
             return item
 
-    def find_dict(self, type, attribute = None):
+    def find_dict(self, item_type, attribute = None):
         # Use attribute and type to index matching dictionary
         if(attribute != None and attribute != ""):
-            return self.dict_map[self.clean_key(attribute) + " " + self.clean_key(type)]
+            return self.dict_map[self.clean_key(attribute) + " " + self.clean_key(item_type)]
         else:
-            return self.dict_map[self.clean_key(type)]
+            return self.dict_map[self.clean_key(item_type)]
 
     def change_name(self, name):
         self.final_touches["Character Name"] = [name, "Touches", "Final"]

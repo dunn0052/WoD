@@ -70,3 +70,9 @@ class playerCharacter:
 
     def print_char(self):
         self.character.print_char()
+
+    def find_att(self, key):
+        return self.character.find_att(key)
+
+    def find_dict(self, item_type = None, attribute = None):
+        return self.character.find_dict(item_type = item_type, attribute = attribute)
