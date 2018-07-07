@@ -60,18 +60,23 @@ class Window(Frame):
 
     def display_character(self):
         po = ["Attribute", "Skill", "Merit", "Physical", "Mental", "Social", "Derangement", "Virtue", "Vice", "Inventory", "Weapon", "Item", "Armor"]
-        k = (0,0)
-        for i in range(3):
-            for j in range(3,6):
-               k = self.display_field(item_type = po[i], attribute = po[j], grid_row= k[0], grid_column= k[1])
-        k = (0,1)
+        # display attributes
+        for j in range(3):
+            count = 0
+            # start stat display from last stat printed beginning at the top
+            for i in range(3,6):
+                count = self.display_field(item_type = po[j], attribute = po[i], grid_row= count, grid_column= j)
+        count = 0
         for i in range(6,9):
-            k = self.display_field(item_type = po[i], attribute = None, grid_row = k[0], grid_column = k[1])
-        k = (0,2)
+           count = self.display_field(item_type = po[i], grid_row= count, grid_column= 3)
+        count = 0
         for i in range(10,13):
-            k = self.display_field(item_type = po[9], attribute = po[i], grid_row = k[0], grid_column = k[1])
-
-    def display_field(self, item_type , attribute, grid_row = 0, grid_column = 0, title = None, horizontal = 0, vertical = 1, justification = "w", zero_flag = False):
+            count = self.display_field(item_type = po[9], attribute = po[i], grid_row= count, grid_column= 4)
+        self.display_field(item_type = "Touches", attribute = "Final", grid_row= 0, grid_column= 5)
+        
+        
+        
+    def display_field(self, item_type , attribute =  None, grid_row = 0, grid_column = 0, title = None, horizontal = 0, vertical = 1, justification = "w", zero_flag = False):
         # can put in seperate title or default to attribute name
         # row, column are where to start in grid justification is based on cardinal directions for some reason so default, "w" for "left"
         if not title:
@@ -81,11 +86,12 @@ class Window(Frame):
         grid_column += horizontal
         dictionary = self.player.find_dict(item_type = item_type, attribute = attribute)
         for items in dictionary:
-            self.display_stat(dictionary = dictionary, stat = items, grid_row = grid_row, grid_column = grid_column, justification = justification, zero_flag = zero_flag)
             # you can choose to print vertical, horizontal or I suppose diagonal for some reason..
-            grid_row += vertical
-            grid_column += horizontal
-        return (grid_row, grid_column)
+            if dictionary[items][0]:
+                self.display_stat(dictionary = dictionary, stat = items, grid_row = grid_row, grid_column = grid_column, justification = justification, zero_flag = zero_flag)
+                grid_row += vertical
+                grid_column += horizontal
+        return grid_row
 
     def display_stat(self, dictionary, stat, grid_row, grid_column, justification, zero_flag = False):
         current_value = dictionary[stat][0]
@@ -95,7 +101,8 @@ class Window(Frame):
         stat_text = stat if isinstance(stat, bool) else stat + ": " + str(current_value)
         if current_value:
             Label(root, text = stat_text, anchor = justification).grid(row = grid_row, column = grid_column)
-        return
+            return
+        
 
 root = Tk()
 #root.geometry("400x300")
