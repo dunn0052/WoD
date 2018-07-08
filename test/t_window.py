@@ -8,22 +8,22 @@ class Window(Frame):
         Frame.__init__(self, master)
         self.master = master
         self.init_window()
+        self.name = ""
 
     def init_window(self):
         self.player = playerCharacter()
         self.title = self.player.character.final_touches["Character Name"][0] + " - " + self.player.character.final_touches["Player"][0]
         self.master.title(self.title)
-
+        self.name = ""
 
 
         quitButton = Button(self, text = "Quit", command = self.client_exit)
-        #quitButton.place(x = 0, y = 0)
 
         menu = Menu(self.master)
         self.master.config(menu=menu)
 
         file = Menu(menu)
-        file.add_command(label = "Load", command = self.load_char)
+        file.add_command(label = "Load", command = self.load_window_f)
         file.add_command(label = "Save", command = self.save_char)
         file.add_command(label = "Exit", command = self.client_exit)
         menu.add_cascade(label="File", menu = file)
@@ -31,24 +31,34 @@ class Window(Frame):
         edit = Menu(menu)
         edit.add_command(label = "Undo")
         menu.add_cascade(label="Edit", menu = edit)
-
-        #Label(root, text = "Test text").grid(row = 0, column = 1)
-        #entry = Entry(root, width = 30)
-        #entry.grid(row = 0, column = 2)
-
-
-
-    def client_exit(self):
-        exit()
-
+        
+    def reset_root(self):
+        list = root.grid_slaves()
+        for l in list:
+            l.destroy()
+            
+    def load_window_f(self):
+        load_window = self.load_window= Toplevel(self.master)
+        #self.master.wait_window(self.load_window)
+        self.load_window_entry = Entry(self.load_window)
+        self.load_window_entry.grid(row=0,column=0)
+        self.load_window_button = Button(self.load_window, text="Load Character", command=self.load_char)
+        self.load_window_button.grid(row=1,column=0)
+        
+        
     def load_char(self, name = None):
-        self.player.load_char("RAGE")
+        self.reset_root()
+        self.player.load_char(self.load_window_entry.get())
         self.char_title()
         self.display_character()
-
+        self.load_window.withdraw()
+        
+    def client_exit(self):
+        self.master.destroy()
+        #exit()
 
     def save_char(self, name = None):
-        self.player.save_char("RAGE")
+        self.player.save_char(self.player.final_touches["Character Name"][0])
 
     def char_title(self, name = None, player = None):
         if not name or not player:
@@ -68,11 +78,11 @@ class Window(Frame):
                 count = self.display_field(item_type = po[j], attribute = po[i], grid_row= count, grid_column= j)
         count = 0
         for i in range(6,9):
-           count = self.display_field(item_type = po[i], grid_row= count, grid_column= 3)
+           count = self.display_field(item_type = po[i], grid_row= count, grid_column= 4)
         count = 0
         for i in range(10,13):
-            count = self.display_field(item_type = po[9], attribute = po[i], grid_row= count, grid_column= 4)
-        self.display_field(item_type = "Touches", attribute = "Final", grid_row= 0, grid_column= 5)
+            count = self.display_field(item_type = po[9], attribute = po[i], grid_row= count, grid_column= 5)
+        self.display_field(item_type = "Touches", attribute = "Final", grid_row= 0, grid_column= 6)
         
         
         
@@ -105,7 +115,6 @@ class Window(Frame):
         
 
 root = Tk()
-#root.geometry("400x300")
 
 app = Window(root)
 
