@@ -39,26 +39,38 @@ class Window(Frame):
             
     def load_window_f(self):
         load_window = self.load_window= Toplevel(self.master)
-        #self.master.wait_window(self.load_window)
         self.load_window_entry = Entry(self.load_window)
-        self.load_window_entry.grid(row=0,column=0)
-        self.load_window_button = Button(self.load_window, text="Load Character", command=self.load_char)
+        self.load_window_entry.grid(row=0,column=0, columnspan = 2)
+        self.load_window_button = Button(self.load_window, text="Load", command=self.load_char)
         self.load_window_button.grid(row=1,column=0)
+        self.load_cancel_button = Button(self.load_window, text ="Cancel", command=self.load_window.destroy)
+        self.load_cancel_button.grid(row=1,column=1)
         
         
     def load_char(self, name = None):
+        self.load_window.transient(self.master)
         self.reset_root()
-        self.player.load_char(self.load_window_entry.get())
+        try:
+            self.player.load_char(self.load_window_entry.get())
+        except:
+            self.error_window_popup(error_message = ("Could not find" + self.load_window_entry.get()))
+            print("couldn't find")
+            return
         self.char_title()
         self.display_character()
         self.load_window.withdraw()
-        
+
+    def error_window_popup(self, error_message = ""):
+            error_window = self.error_window = Toplevel(self.load_window)
+            self.error_label = Label(self.error_window, text = error_message).grid(row=0,column=0)
+            self.error_ok_button = Button(self.error_window, text = "Ok", command=self.error_window.withdraw).grid(row=1,column=0)
+            
     def client_exit(self):
         self.master.destroy()
         #exit()
 
     def save_char(self, name = None):
-        self.player.save_char(self.player.final_touches["Character Name"][0])
+        self.player.save_char(self.player.character.final_touches["Character Name"][0])
 
     def char_title(self, name = None, player = None):
         if not name or not player:
