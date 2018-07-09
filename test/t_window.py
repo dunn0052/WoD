@@ -11,16 +11,11 @@ class Window(Frame):
         self.name = ""
 
     def init_window(self):
-        char_sheet = PhotoImage(file = "NWoD1-Page.png")
-        char_sheet = char_sheet.subsample(4)
-        bg_sheet = Label(self.master, image=char_sheet)
-        bg_sheet.image = char_sheet
-        bg_sheet.grid(row=0,column=0)
         self.player = playerCharacter()
         self.title = self.player.character.final_touches["Character Name"][0] + " - " + self.player.character.final_touches["Player"][0]
         self.master.title(self.title)
         self.name = ""
-
+        self.set_bg(image_file = "NWoD1-Page.png", resize_factor = 4)
 
         menu = Menu(self.master)
         self.master.config(menu=menu)
@@ -34,6 +29,13 @@ class Window(Frame):
         edit = Menu(menu)
         edit.add_command(label = "Undo")
         menu.add_cascade(label="Edit", menu = edit)
+        
+    def set_bg(self, image_file, resize_factor):
+        char_sheet = PhotoImage(file = image_file)
+        char_sheet = char_sheet.subsample(resize_factor)
+        bg_sheet = Label(self.master, image=char_sheet)
+        bg_sheet.image = char_sheet
+        bg_sheet.grid(row=0,column=0)
         
     def reset_root(self, bg_keep = False):
         list = root.grid_slaves()
