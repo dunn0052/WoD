@@ -11,13 +11,16 @@ class Window(Frame):
         self.name = ""
 
     def init_window(self):
+        char_sheet = PhotoImage(file = "NWoD1-Page.png")
+        char_sheet = char_sheet.subsample(4)
+        bg_sheet = Label(self.master, image=char_sheet)
+        bg_sheet.image = char_sheet
+        bg_sheet.grid(row=0,column=0)
         self.player = playerCharacter()
         self.title = self.player.character.final_touches["Character Name"][0] + " - " + self.player.character.final_touches["Player"][0]
         self.master.title(self.title)
         self.name = ""
 
-
-        quitButton = Button(self, text = "Quit", command = self.client_exit)
 
         menu = Menu(self.master)
         self.master.config(menu=menu)
@@ -32,10 +35,14 @@ class Window(Frame):
         edit.add_command(label = "Undo")
         menu.add_cascade(label="Edit", menu = edit)
         
-    def reset_root(self):
+    def reset_root(self, bg_keep = False):
         list = root.grid_slaves()
+        bg = list[0]
         for l in list:
-            l.destroy()
+            if bg_keep and l == bg:
+                continue
+            else:
+                l.destroy()
             
     def load_window_f(self):
         load_window = self.load_window= Toplevel(self.master)
@@ -60,7 +67,7 @@ class Window(Frame):
         
     def load_char(self, name = None):
         self.load_window.transient(self.master)
-        self.reset_root()
+        self.reset_root(bg_keep = True)
         try:
             self.player.load_char(self.load_window_entry.get())
         except:
@@ -80,14 +87,16 @@ class Window(Frame):
                 # black magic -- or runs each function to determine any is true
 
     def save_prompt(self):
-        save_prompt_window = self.save_prompt_window = Toplevel(self.save_window)
-        self.save_text = Label(self.save_prompt_window, text = ("Save character as "+self.save_window_entry.get()))
-        self.save_text.grid(row=0,column=0,columnspan =2)
-        self.save_window_button = Button(self.save_prompt_window, text="Ok", command=self.save_char)
-        self.save_window_button.grid(row=1,column=0)
-        self.save_cancel_button = Button(self.save_prompt_window, text ="Cancel", command=self.save_prompt_window.destroy)
-        self.save_cancel_button.grid(row=1,column=1)
-
+        if not self.save_window_entry.get() == "":
+            save_prompt_window = self.save_prompt_window = Toplevel(self.save_window)
+            self.save_text = Label(self.save_prompt_window, text = ("Save character as "+self.save_window_entry.get()))
+            self.save_text.grid(row=0,column=0,columnspan =2)
+            self.save_window_button = Button(self.save_prompt_window, text="Ok", command=self.save_char)
+            self.save_window_button.grid(row=1,column=0)
+            self.save_cancel_button = Button(self.save_prompt_window, text ="Cancel", command=self.save_prompt_window.destroy)
+            self.save_cancel_button.grid(row=1,column=1)
+        else:
+            self.error_window_popup(self.save_window, error_message="Error: File name cannot be blank.")
 
 
     def client_exit(self):
@@ -95,12 +104,10 @@ class Window(Frame):
         #exit()
 
     def save_char(self, name = None):
-        if not self.save_window_entry.get() == "":
-            self.player.save_char(self.save_window_entry.get())
-            self.save_prompt_window.withdraw()
-            self.save_window.withdraw()
-        else:
-            self.error_window_popup(self.save_prompt_window, error_message="Error: File name cannot be blank.", parent_close = True)
+        self.player.save_char(self.save_window_entry.get())
+        self.save_prompt_window.withdraw()
+        self.save_window.withdraw()
+
             
         
     def char_title(self, name = None, player = None):
