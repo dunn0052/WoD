@@ -35,7 +35,7 @@ class Window(Frame):
         char_sheet = char_sheet.subsample(resize_factor)
         bg_sheet = Label(self.master, image=char_sheet)
         bg_sheet.image = char_sheet
-        bg_sheet.grid(row=0,column=0)
+        bg_sheet.grid(row=0,column=0)#place(x=0,y=0)
         
     def reset_root(self, bg_keep = False):
         list = root.grid_slaves()
@@ -143,7 +143,7 @@ class Window(Frame):
         # row, column are where to start in grid justification is based on cardinal directions for some reason so default, "w" for "left"
         if not title:
             title = attribute + " " + item_type if attribute else item_type
-        Label(root, text = title, anchor = justification).grid(row = grid_row, column = grid_column)
+        Label(root, text = title, anchor = justification, bg = "white", padx = 0, pady = 0).grid(row = grid_row, column = grid_column)
         grid_row += vertical
         grid_column += horizontal
         dictionary = self.player.find_dict(item_type = item_type, attribute = attribute)
@@ -158,16 +158,15 @@ class Window(Frame):
     def display_stat(self, dictionary, stat, grid_row, grid_column, justification, zero_flag = False):
         current_value = dictionary[stat][0]
         if zero_flag:
-            Label(root, text = stat + ": " + str(current_value), anchor = justification).grid(row = grid_row, column = grid_column)
+            Label(root, text = stat + ": " + str(current_value), anchor = justification, bg = "white").grid(row = grid_row, column = grid_column)
             return
         stat_text = stat if isinstance(stat, bool) else stat + ": " + str(current_value)
         if current_value:
-            Label(root, text = stat_text, anchor = justification).grid(row = grid_row, column = grid_column)
+            Label(root, text = stat_text, anchor = justification, bg = "white").grid(row = grid_row, column = grid_column)
             return
         
 
 root = Tk()
-
 app = Window(root)
-
+root.geometry("638x825")
 root.mainloop()
