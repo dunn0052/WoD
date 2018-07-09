@@ -24,7 +24,7 @@ class Window(Frame):
 
         file = Menu(menu)
         file.add_command(label = "Load", command = self.load_window_f)
-        file.add_command(label = "Save", command = self.save_char)
+        file.add_command(label = "Save", command = self.save_window_f)
         file.add_command(label = "Exit", command = self.client_exit)
         menu.add_cascade(label="File", menu = file)
 
@@ -45,6 +45,17 @@ class Window(Frame):
         self.load_window_button.grid(row=1,column=0)
         self.load_cancel_button = Button(self.load_window, text ="Cancel", command=self.load_window.destroy)
         self.load_cancel_button.grid(row=1,column=1)
+
+    def save_window_f(self):
+        default_save = StringVar()
+        default_save.set(self.player.character.final_touches["Character Name"][0])
+        save_window = self.save_window= Toplevel(self.master)
+        self.save_window_entry = Entry(self.save_window, textvariable = default_save)
+        self.save_window_entry.grid(row=0,column=0, columnspan = 2)
+        self.save_window_button = Button(self.save_window, text="Save as", command=self.save_prompt)
+        self.save_window_button.grid(row=1,column=0)
+        self.save_cancel_button = Button(self.save_window, text ="Cancel", command=self.save_window.destroy)
+        self.save_cancel_button.grid(row=1,column=1)
         
         
     def load_char(self, name = None):
@@ -53,25 +64,45 @@ class Window(Frame):
         try:
             self.player.load_char(self.load_window_entry.get())
         except:
-            self.error_window_popup(error_message = ("Could not find" + self.load_window_entry.get()))
-            print("couldn't find")
+            self.error_window_popup(window = self.load_window, error_message = ("Could not find" + self.load_window_entry.get()))
             return
         self.char_title()
         self.display_character()
         self.load_window.withdraw()
 
-    def error_window_popup(self, error_message = ""):
-            error_window = self.error_window = Toplevel(self.load_window)
+    def error_window_popup(self, window, error_message = "", parent_close = False):
+            error_window = self.error_window = Toplevel(window)
             self.error_label = Label(self.error_window, text = error_message).grid(row=0,column=0)
-            self.error_ok_button = Button(self.error_window, text = "Ok", command=self.error_window.withdraw).grid(row=1,column=0)
-            
+            if not parent_close:
+                self.error_ok_button = Button(self.error_window, text = "Ok", command=self.error_window.withdraw).grid(row=1,column=0)
+            elif parent_close:
+                self.error_ok_button = Button(self.error_window, text = "Ok", command=lambda: self.error_window.withdraw() or window.withdraw()).grid(row=1,column=0)
+                # black magic -- or runs each function to determine any is true
+
+    def save_prompt(self):
+        save_prompt_window = self.save_prompt_window = Toplevel(self.save_window)
+        self.save_text = Label(self.save_prompt_window, text = ("Save character as "+self.save_window_entry.get()))
+        self.save_text.grid(row=0,column=0,columnspan =2)
+        self.save_window_button = Button(self.save_prompt_window, text="Ok", command=self.save_char)
+        self.save_window_button.grid(row=1,column=0)
+        self.save_cancel_button = Button(self.save_prompt_window, text ="Cancel", command=self.save_prompt_window.destroy)
+        self.save_cancel_button.grid(row=1,column=1)
+
+
+
     def client_exit(self):
         self.master.destroy()
         #exit()
 
     def save_char(self, name = None):
-        self.player.save_char(self.player.character.final_touches["Character Name"][0])
-
+        if not self.save_window_entry.get() == "":
+            self.player.save_char(self.save_window_entry.get())
+            self.save_prompt_window.withdraw()
+            self.save_window.withdraw()
+        else:
+            self.error_window_popup(self.save_prompt_window, error_message="Error: File name cannot be blank.", parent_close = True)
+            
+        
     def char_title(self, name = None, player = None):
         if not name or not player:
             self.title = self.player.character.final_touches["Character Name"][0] + " - " + self.player.character.final_touches["Player"][0]
